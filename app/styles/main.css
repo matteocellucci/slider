@@ -71,7 +71,6 @@ body {
 #controller {
   bottom: 0;
   display: flex;
-  padding: 1rem;
   position: fixed;
   right: 0;
 }
@@ -91,14 +90,11 @@ body {
   color: #d3d3d3;
 }
 
-#prev-btn:hover {
-  color: #808080;
-}
-
 #next-btn {
   color: #000;
 }
 
-#next-btn:hover {
+#prev-btn:active,
+#next-btn:active {
   color: #808080;
 }
