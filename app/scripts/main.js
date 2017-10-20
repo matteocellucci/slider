@@ -4,6 +4,13 @@ jQuery(function($) {
   let $current = $('.diapositive.current');
   let isTransitionEnd = true;
 
+  // Init
+  $('.diapositive').each(function() {
+    const $this = $(this);
+    const canvasCtrl = new CanvasController($this.width(), $this.height());
+    $this.append(canvasCtrl.getCanvas());
+  });
+
   // Functions
   const bindTransitionEnd = function() {
     isTransitionEnd = false;
