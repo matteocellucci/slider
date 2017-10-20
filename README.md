@@ -9,7 +9,7 @@
 - [ ] Add 'drawing on slide' feature'
   - [x] Add canvas
   - [x] Add cursor size setting
-  - [ ] Add color setting
-  - [ ] Add clear button
+  - [x] Add color setting
+  - [x] Add clear button
   - [ ] Resize canvas entering fullscreen mode
   - [ ] Add toggle feature button

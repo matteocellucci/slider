@@ -53,12 +53,17 @@ jQuery(function($) {
       $ctrl.addClass('hide');
     }
   };
+  const clearCanvas = function() {
+    const $currentCanvas = $current.children('.livePenCanvas');
+    CanvasesController.clearCanvas($currentCanvas[0]);
+  };
 
   // Mouse event handlers
   $('#prev-btn').on('click', slideRight);
   $('#next-btn').on('click', slideLeft);
   $('#fullscreen-btn').on('click', fullscreen.toggle);
   $('#togglectrl-btn').on('click', toggleCtrl);
+  $('#clearcanvas-btn').on('click', clearCanvas);
 
   // Keyboard event handlers
   $('html').on('keydown', function(e) {
@@ -69,6 +74,9 @@ jQuery(function($) {
         break;
       case 37: // left arrow
         slideRight();
+        break;
+      case 67: // letter c
+        clearCanvas();
         break;
       case 70: // letter f
         if (fullscreen.enabled()) {

@@ -54,4 +54,8 @@ class CanvasesController {
   setBrushColor(color) {
     this.brushColor = color;
   }
+
+  static clearCanvas(canvas) {
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  }
 }
