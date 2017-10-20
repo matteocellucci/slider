@@ -19,7 +19,7 @@
     <!-- endbuild -->
 
     <!-- manual:js -->
-    <script src="scripts/CanvasController.js"></script>
+    <script src="scripts/CanvasesController.js"></script>
     <script src="scripts/FullscreenController.js"></script>
     <!-- endmanual -->
   </head>
@@ -61,6 +61,14 @@
       </section>
     </div>
     <nav id="controller">
+      <input id="brushcolor-ipt" type="color" name="brush-color">
+      <select id="brushsize-sct" name="brush-size">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
       <button id="togglectrl-btn">H</button>
       <button id="fullscreen-btn">F</button>
       <button id="prev-btn">&#8701;</button>

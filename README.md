@@ -7,4 +7,9 @@
 - [ ] Create a logo
 - [ ] Change favicon
 - [ ] Add 'drawing on slide' feature'
-  - [ ] Add cursor size/color setting
+  - [x] Add canvas
+  - [x] Add cursor size setting
+  - [ ] Add color setting
+  - [ ] Add clear button
+  - [ ] Resize canvas entering fullscreen mode
+  - [ ] Add toggle feature button

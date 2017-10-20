@@ -1,14 +1,15 @@
 jQuery(function($) {
   // Objects
   const fullscreen = new FullscreenController(document.documentElement);
+  const canvasesController = new CanvasesController();
   let $current = $('.diapositive.current');
   let isTransitionEnd = true;
 
   // Init
   $('.diapositive').each(function() {
     const $this = $(this);
-    const canvasCtrl = new CanvasController($this.width(), $this.height());
-    $this.append(canvasCtrl.getCanvas());
+    const canvas = canvasesController.generate($this.width(), $this.height());
+    $this.append(canvas);
   });
 
   // Functions
@@ -82,4 +83,13 @@ jQuery(function($) {
     }
     e.preventDefault();
   });
+
+  // Other input handlers
+  $('#brushsize-sct').on('change', function() {
+    canvasesController.setBrushSize($(this).val());
+  });
+  $('#brushcolor-ipt').on('change', function() {
+    canvasesController.setBrushColor($(this).val());
+  });
+
 });
