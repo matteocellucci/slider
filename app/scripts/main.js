@@ -21,9 +21,12 @@ jQuery(function($) {
     }
   };
 
-  // Event handlers
+  // Mouse event handlers
   $('#prev-btn').on('click', slideRight);
   $('#next-btn').on('click', slideLeft);
+  $('#fullscreen-btn').on('click', fullscreen.toggle);
+
+  // Keyboard event handlers
   $('html').on('keydown', function(e) {
     // console.log(e.which);
     switch (e.which) {

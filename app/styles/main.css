@@ -77,13 +77,18 @@ body {
 
 #controller button {
   background-color: transparent;
+  color: #000;
   border: 0;
   cursor: pointer;
-  font-size: 1.5rem;
+  font: 100 1.3rem monospace;
 }
 
 #controller button:focus {
   outline: 0;
+}
+
+#controller button:active {
+  color: #808080;
 }
 
 #prev-btn {
@@ -92,9 +97,4 @@ body {
 
 #next-btn {
   color: #000;
-}
-
-#prev-btn:active,
-#next-btn:active {
-  color: #808080;
 }

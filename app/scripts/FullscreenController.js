@@ -1,6 +1,8 @@
 class FullscreenController {
   constructor(target) {
     this.target = target;
+    this.open = this.open.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   element() {
