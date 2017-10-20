@@ -6,4 +6,5 @@
 - [ ] Fix fast animation overlapping
 - [ ] Create a logo
 - [ ] Change favicon
-- [ ] Add theme feature
+- [ ] Add 'drawing on slide' feature'
+  - [ ] Add cursor size/color setting
