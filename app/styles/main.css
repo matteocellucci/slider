@@ -73,6 +73,11 @@ body {
   display: flex;
   position: fixed;
   right: 0;
+  transition: transform 180ms linear;
+}
+
+#controller.hide {
+  transform: translateX(100%);
 }
 
 #controller button {

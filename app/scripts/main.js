@@ -36,11 +36,21 @@ jQuery(function($) {
       }
     }
   };
+  const toggleCtrl = function() {
+    const $ctrl = $('#controller');
+    if ($ctrl.hasClass('hide')) {
+      $ctrl.removeClass('hide');
+    }
+    else {
+      $ctrl.addClass('hide');
+    }
+  };
 
   // Mouse event handlers
   $('#prev-btn').on('click', slideRight);
   $('#next-btn').on('click', slideLeft);
   $('#fullscreen-btn').on('click', fullscreen.toggle);
+  $('#togglectrl-btn').on('click', toggleCtrl);
 
   // Keyboard event handlers
   $('html').on('keydown', function(e) {
@@ -56,6 +66,9 @@ jQuery(function($) {
         if (fullscreen.enabled()) {
           fullscreen.toggle();
         }
+        break;
+      case 72: // letter h
+        toggleCtrl();
         break;
       default:
         return;
