@@ -27,16 +27,13 @@ img {
 
 /* BOILERPLATE */
 .browserupgrade {
-  background: #ccc;
-  color: #000;
   margin: 0.2em 0;
   padding: 0.2em 0;
 }
 
 body {
-  background: #ecf0f1;
-  color: #2c3e50;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #000;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -91,17 +88,17 @@ body {
 }
 
 #prev-btn {
-  color: #7f8c8d;
+  color: #d3d3d3;
 }
 
 #prev-btn:hover {
-  color: #95a5a6;
+  color: #808080;
 }
 
 #next-btn {
-  color: #c0392b;
+  color: #000;
 }
 
 #next-btn:hover {
-  color: #e74c3c;
+  color: #808080;
 }
