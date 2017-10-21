@@ -92,12 +92,18 @@ jQuery(function($) {
     e.preventDefault();
   });
 
-  // Other input handlers
+  // Other handlers bind
   $('#brushsize-sct').on('change', function() {
     canvasesController.setBrushSize($(this).val());
   });
   $('#brushcolor-ipt').on('change', function() {
     canvasesController.setBrushColor($(this).val());
+  });
+  $('.diapositive').on('resize', function() {
+    const $this = $(this);
+    const $canvas = $this.children('.livePenCanvas');
+    $canvas.width($this.width());
+    $canvas.height($this.height());
   });
 
 });

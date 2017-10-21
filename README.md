@@ -11,5 +11,7 @@
   - [x] Add cursor size setting
   - [x] Add color setting
   - [x] Add clear button
-  - [ ] Resize canvas entering fullscreen mode
-  - [ ] Add toggle feature button
+  - [x] Resize canvas entering fullscreen mode
+  - [?] Add toggle feature button
+  - [ ] Add layers
+  - [ ] Add eraser
