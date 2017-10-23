@@ -1,0 +1,269 @@
+/* TOOLBAR */
+#toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #bdc3c7;
+  z-index: 9999;
+  transition: transform 200ms linear;
+  padding: 0 1rem;
+}
+
+#toolbar.show {
+  transform: translateX(100%);
+}
+
+.setting {
+  margin: 1rem 0;
+  font: 700 .8rem sans-serif;
+  text-transform: uppercase;
+}
+
+.sub-settings li {
+  margin-top: 1rem;
+}
+
+#toolbar svg {
+  fill: currentColor;
+  height: 80%;
+  width: auto;
+}
+
+/* SWITCH */
+.switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch-icon {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-left: 1.2rem;
+  width: 2rem;
+  height: 1rem;
+  background-color: #e74c3c;
+  cursor: pointer;
+  transition: background 200ms linear;
+}
+
+.switch-icon:before {
+  content: '';
+  position: absolute;
+  top: .05rem;
+  left: .05rem;
+  width: .9rem;
+  height: .9rem;
+  background-color: #ecf0f1;
+  transition: transform 200ms linear;
+}
+
+.switch-controller:checked + .switch-icon {
+  background-color: #2ecc71;
+}
+
+.switch-controller:checked + .switch-icon:before {
+  transform: translateX(1.0rem);
+}
+
+/* CANVAS SETTINGS */
+#canvas-tools {
+  display: flex;
+  justify-content: space-between;
+}
+
+.canvas-tool {
+  position: relative;
+  top: 0;
+  left: 0;
+  flex: 0 1 50%;
+  height: 3rem;
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+.canvas-tool-icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.canvas-tool-icon:before {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: #2ecc71;
+  position: absolute;
+  bottom: 0;
+  transition: transform 200ms linear;
+  z-index: 11;
+}
+
+.canvas-tool-icon:after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.canvas-tool-icon.brush:before {
+  left: 100%;
+}
+
+.canvas-tool-icon.eraser:before {
+  left: -100%;
+}
+
+.canvas-tool > input:checked + .canvas-tool-icon.brush:before {
+  transform: translateX(-100%);
+}
+
+.canvas-tool > input:checked + .canvas-tool-icon.eraser:before {
+  transform: translateX(100%);
+}
+
+#brush-size-conteiner {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  height: 3rem;
+}
+
+#brush-size-preview-conteiner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 20%;
+}
+
+#brush-size-preview {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: #34495e;
+}
+
+#brush-size {
+  width: 80%;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: .3rem;
+  appearance: none;
+  background-color: #34495e;
+  cursor: pointer;
+  opacity: .8;
+  transition: opacity 200ms linear;
+}
+
+#brush-size:hover {
+  opacity: 1;
+}
+
+#brush-size::-webkit-slider-thumb {
+  appearance: none;
+  width: .9rem;
+  height: .9rem;
+  background-color: #ecf0f1;
+}
+
+#brush-size::-moz-range-thumb {
+  appearance: none;
+  width: .4rem;
+  height: .4rem;
+  background-color: #ecf0f1;
+}
+
+#brush-color-conteiner {
+  height: 3rem;
+}
+
+#brush-color {
+  outline: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+#canvas-clearall-conteiner {
+  height: 3rem;
+}
+
+#canvas-clearall {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background-color: #34495e;
+  color: #ecf0f1;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#canvas-clearall:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  outline: 0;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: #e74c3c;
+}
+
+#canvas-clearall:after {
+  position: absolute;
+  right: 100%;
+  bottom: 0;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: #2ecc71;
+  transition: transform 200ms linear;
+}
+
+#canvas-clearall:hover:after {
+  transform: translateX(100%);
+}
+
+/* EXTRA BUTTONS */
+.toolbar-button {
+  background: #34495e;
+  border: 0;
+  color: #ecf0f1;
+  outline: 0;
+  cursor: pointer;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+}
+
+#toolbar-toggle {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  background-color: transparent;
+  color: #34495e;
+}

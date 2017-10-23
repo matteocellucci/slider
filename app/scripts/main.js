@@ -64,6 +64,9 @@ jQuery(function($) {
   $('#fullscreen-btn').on('click', fullscreen.toggle);
   $('#togglectrl-btn').on('click', toggleCtrl);
   $('#clearcanvas-btn').on('click', clearCanvas);
+  $('#toolbar-toggle').on('click', e => {
+    $(this).toggleClass('show');
+  });
 
   // Keyboard event handlers
   $('html').on('keydown', function(e) {
