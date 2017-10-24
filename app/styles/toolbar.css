@@ -1,17 +1,31 @@
 /* TOOLBAR */
 #toolbar {
-  background-color: #bdc3c7;
   height: 100%;
-  left: 0;
+  right: 100%;
   padding: 1rem;
   position: absolute;
   top: 0;
   transition: transform 200ms linear;
-  z-index: 9999;
+  z-index: 999;
 }
 
 #toolbar.show {
-  transform: translateX(100%);
+  transform: translateX(99.5%);
+}
+
+#toggle-toolbar {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  border: 0;
+  cursor: pointer;
+  font: 300 .7rem sans-serif;
+  outline: 0;
+}
+
+.toolbar-color {
+  background-color: #303030;
+  color: #fbfbfb;
 }
 
 .settings {
@@ -20,7 +34,7 @@
 
 .setting {
   margin: 0 0 1rem 0;
-  font: 700 .8rem sans-serif;
+  font: 100 .8rem sans-serif;
   text-transform: uppercase;
 }
 
@@ -43,8 +57,9 @@
   margin-left: 1.2rem;
   width: 2rem;
   height: 1rem;
-  background-color: #e74c3c;
+  background-color: #fbfbfb;
   cursor: pointer;
+  border-radius: .5rem;
   transition: background 200ms linear;
 }
 
@@ -55,7 +70,8 @@
   left: .05rem;
   width: .9rem;
   height: .9rem;
-  background-color: #ecf0f1;
+  border-radius: 50%;
+  background-color: #303030;
   transition: transform 200ms linear;
 }
 
