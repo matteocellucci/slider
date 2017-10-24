@@ -1,26 +1,15 @@
 /* TOOLBAR */
 #toolbar {
-  height: 100%;
   right: 100%;
   padding: 1rem;
   position: absolute;
-  top: 0;
+  bottom: 0;
   transition: transform 200ms linear;
   z-index: 999;
 }
 
 #toolbar.show {
-  transform: translateX(99.5%);
-}
-
-#toggle-toolbar {
-  position: absolute;
-  bottom: 0;
-  left: 100%;
-  border: 0;
-  cursor: pointer;
-  font: 300 .7rem sans-serif;
-  outline: 0;
+  transform: translateX(100%);
 }
 
 .toolbar-color {
