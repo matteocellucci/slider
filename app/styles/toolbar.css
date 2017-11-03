@@ -46,6 +46,22 @@
   transition: opacity 300ms ease-in-out;
 }
 
+.switch-icon:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -.4rem;
+  width: .4rem;
+  height: 100%;
+  background-color: #303030;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.switch:hover .switch-icon:after {
+  opacity: 1;
+}
+
 .switch-controller:checked + .switch-icon:before {
   opacity: 1;
 }
