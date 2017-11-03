@@ -37,11 +37,3 @@ body {
 .diapositive.prev {
   transform: translateX(-200%);
 }
-
-/* NAVIGATOR */
-#navigator {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 1rem;
-}
