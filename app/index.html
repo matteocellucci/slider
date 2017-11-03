@@ -34,30 +34,27 @@
       </section>
     </div>
     <nav id="navigator">
+      <button id="menu-btn" class="navigator-button">&#9776;</button>
       <button id="prev-btn" class="navigator-button">&#8701;</button>
       <button id="next-btn" class="navigator-button">&#8702;</button>
     </nav>
-    <aside class="toolbar-color show" id="toolbar">
-      <ul class="settings">
-        <li class="setting">
-          <label class="switch">navigator
-            <input type="checkbox" id="navigator-setting" class="switch-controller hide" checked>
-            <span class="switch-icon"></span>
-          </label>
-        </li>
-        <li class="setting">
-          <label class="switch">Fullscreen
-            <input type="checkbox" id="fullscreen-setting" class="switch-controller hide">
-            <span class="switch-icon"></span>
-          </label>
-        </li>
-        <li class="setting">
-          <label class="switch">Canvas
-            <input type="checkbox" id="canvas-setting" class="switch-controller hide">
-            <span class="switch-icon"></span>
-          </label>
-        </li>
-      </ul>
+    <aside id="toolbar">
+      <div id="fullscreen-setting" class="setting">
+        <label class="switch">
+          <input type="checkbox" class="switch-controller hide">
+          <span class="switch-icon" aria-label="Toggle fullscreen">
+            <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+          </span>
+        </label>
+      </div>
+      <div id="canvas-setting" class="setting">
+        <label class="switch">
+          <input type="checkbox" class="switch-controller hide">
+          <span class="switch-icon" aria-label="Toggle canvas">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </span>
+        </label>
+      </div>
     </aside>
     <div class="window" id="canvas-window">
       <button class="window-tool">B</button>
