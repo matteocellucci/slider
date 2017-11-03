@@ -1,12 +1,17 @@
 #toolbar {
   position: fixed;
   top: 1rem;
-  right: 0;
+  left: 100%;
   z-index: 9000;
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-end;
   align-items: flex-start;
+  transition: transform 300ms ease-in-out;
+}
+
+#toolbar.show {
+  transform: translateX(-100%);
 }
 
 .setting {
@@ -64,4 +69,8 @@
 
 .switch-controller:checked + .switch-icon:before {
   opacity: 1;
+}
+
+.switch-controller.hide {
+  display: none;
 }
