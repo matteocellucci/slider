@@ -3,3 +3,22 @@
   bottom: 1rem;
   right: 1rem;
 }
+
+.navigator-button {
+  color: #303030;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity 300ms ease-in-out;
+  outline: 0;
+}
+
+.navigator-button:hover {
+  opacity: 1;
+}
+
+.navigator-button:active {
+  opacity: 0;
+}
