@@ -1,0 +1,32 @@
+.window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column wrap;
+  border: 1px solid #303030;
+  border-top-width: 10px;
+  background-color: #303030;
+}
+
+.window-tool {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 1px;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid transparent;
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fbfbfb;
+  border-radius: 2px;
+  z-index: 1;
+  transition: border-color 300ms ease-in-out;
+}
+
+.window-tool:hover {
+  border-color: #252525; 
+}
+
