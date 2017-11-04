@@ -1,6 +1,6 @@
 (function() {
   const slider = new Slider('slider');
-  const toolbar = new Toolbar('toolbar');
+  const toolbar = new ToolbarController('toolbar');
 
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
   document.getElementById('next-btn').addEventListener('click', slider.next);

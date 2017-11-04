@@ -1,4 +1,4 @@
-class Toolbar {
+class ToolbarController {
   constructor(id) {
     this.frame = document.getElementById(id);
     this.show = this.show.bind(this);
