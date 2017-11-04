@@ -2,14 +2,14 @@
   const slider = new Slider('slider');
   const toolbar = new ToolbarController('toolbar');
   const fullscreen = new FullscreenController(document.documentElement);
-  const canvasesController = new CanvasesController();
+  const canvases = new CanvasesController();
 
-  canvasesController.generate(slider.diaps);
+  canvases.generate(slider.diaps);
 
   toolbar.setting('fullscreen-setting', fullscreen.toggle);
   toolbar.setting('canvas-setting', function() {
     // window toggle
-    canvasesController.toggle();
+    canvases.toggle();
   });
 
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
@@ -29,6 +29,9 @@
         toolbar.reverse('fullscreen-setting');
         fullscreen.toggle();
         break;
+      case 'd':
+        toolbar.reverse('canvas-setting');
+        canvases.toggle();
       default:
         return;
     }
