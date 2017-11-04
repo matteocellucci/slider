@@ -1,8 +1,10 @@
 (function() {
   const slider = new Slider('slider');
+  const toolbar = new Toolbar('toolbar');
 
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
   document.getElementById('next-btn').addEventListener('click', slider.next);
+  document.getElementById('menu-btn').addEventListener('click', toolbar.toggle);
 
   window.addEventListener('keydown', e => {
     console.log(e.key);
