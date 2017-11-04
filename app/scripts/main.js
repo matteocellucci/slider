@@ -2,12 +2,19 @@
   const slider = new Slider('slider');
   const toolbar = new ToolbarController('toolbar');
   const fullscreen = new FullscreenController(document.documentElement);
+  const canvasesController = new CanvasesController();
+
+  canvasesController.generate(slider.diaps);
+
+  toolbar.setting('fullscreen-setting', fullscreen.toggle);
+  toolbar.setting('canvas-setting', function() {
+    // window toggle
+    canvasesController.toggle();
+  });
 
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
   document.getElementById('next-btn').addEventListener('click', slider.next);
   document.getElementById('menu-btn').addEventListener('click', toolbar.toggle);
-
-  toolbar.setting('fullscreen-setting', fullscreen.toggle);
 
   window.addEventListener('keydown', e => {
     console.log(e.key);
