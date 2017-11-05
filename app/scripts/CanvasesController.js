@@ -11,6 +11,7 @@ class CanvasesController {
       y: 0,
       down: false
     };
+    this.resize = this.resize.bind(this);
   }
 
   generate(elems) {
@@ -54,6 +55,18 @@ class CanvasesController {
      
       this.canvases.push(canvas);
       elems[i].appendChild(canvas);
+    }
+  }
+
+  resize(ref) {
+    let rect, i;
+    // TODO - Know issue: context clear after resize
+    
+    i = this.canvases.length;
+    rect = ref.getBoundingClientRect();
+    while (i--) {
+      this.canvases[i].width = rect.width;
+      this.canvases[i].height = rect.height;
     }
   }
 

@@ -16,6 +16,9 @@
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
   document.getElementById('next-btn').addEventListener('click', slider.next);
   document.getElementById('menu-btn').addEventListener('click', toolbar.toggle);
+  window.addEventListener('resize', function() {
+    canvases.resize(document.documentElement);
+  });
 
   window.addEventListener('keydown', e => {
     console.log(e.key);
