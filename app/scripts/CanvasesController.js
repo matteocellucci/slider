@@ -2,23 +2,20 @@ class CanvasesController {
   constructor() {
     this.canvases = [];
     this.show = false;
-    this.brushSize = 1;
-    this.brushColor = '#000000';
-    this.mouse = {
-      lastX: 0,
-      lastY: 0,
-      x: 0,
-      y: 0,
-      down: false
-    };
+    this.size = 1;
+    this.color = '#000000';
+    this.tool = 'brush';
     this.resize = this.resize.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
   }
 
   generate(elems) {
     for (let i = 0; i < elems.length; i++) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
+      let canvas, ctx, draw;
+
+      canvas = document.createElement('canvas');
+      ctx = canvas.getContext('2d');
+      draw = false;
     
       canvas.setAttribute('class', 'livePenCanvas');
       canvas.width = elems[i].offsetWidth;
@@ -29,25 +26,31 @@ class CanvasesController {
 
       canvas.addEventListener('mouseup', e => {
         if (e.which == 1) {
-          this.mouse.down = false;
           ctx.closePath();
+          draw = false;
         }
         e.preventDefault();
       });
       canvas.addEventListener('mousedown', e => {
         if (e.which == 1) {
-          ctx.beginPath();
-          ctx.strokeStyle = this.brushColor;
-          ctx.lineWidth = this.brushSize * 2;
+          draw = true;
+          if (this.tool === 'eraser') {
+            ctx.globalCompositeOperation = 'destination-out';
+          }
+          else {
+            ctx.globalCompositeOperation = 'source-over';
+          }
+          ctx.strokeStyle = this.color;
+          ctx.lineWidth = this.size * 2;
           ctx.lineJoin = 'round';
           ctx.lineCap = 'round';
+          ctx.beginPath();
           ctx.moveTo(e.clientX, e.clientY);
-          this.mouse.down = true;
         }
         e.preventDefault();
       });
       canvas.addEventListener('mousemove', e => {
-        if (this.mouse.down) {
+        if (draw) {
           ctx.lineTo(e.clientX, e.clientY);
           ctx.stroke();
         }
@@ -85,12 +88,20 @@ class CanvasesController {
     this.show = !this.show;
   }
 
-  setBrushSize(size) {
-    this.brushSize = size;
+  setSize(size) {
+    this.size = size;
   }
 
-  setBrushColor(color) {
-    this.brushColor = color;
+  setColor(color) {
+    this.color = color;
+  }
+
+  setEraser() {
+    this.tool = 'eraser';
+  }
+
+  setBrush() {
+    this.tool = 'brush';
   }
 
   clearCanvas(i) {

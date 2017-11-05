@@ -1,12 +1,12 @@
 (function() {
-  let brushSize;
+  let canvasToolSize;
 
   const slider = new Slider('slider');
   const toolbar = new ToolbarController('toolbar');
   const fullscreen = new FullscreenController(document.documentElement);
   const canvases = new CanvasesController();
   const canvasWindow = new ToolWindow('canvas-window');
-  brushSize = 1;
+  canvasToolSize = 1;
 
   canvases.generate(slider.diaps);
 
@@ -16,13 +16,17 @@
     canvases.toggle();
   });
 
-  canvasWindow.tool('canvas-window-brush', () => console.log('brush'));
-  canvasWindow.tool('canvas-window-eraser', () => console.log('brush'));
+  canvasWindow.tool('canvas-window-brush', () => {
+    canvases.setBrush();
+  });
+  canvasWindow.tool('canvas-window-eraser', () => {
+    canvases.setEraser()
+  });
   canvasWindow.tool('canvas-window-size', () => {
-    brushSize = (brushSize > 5) ? 1 : brushSize + 1;
+    canvasToolSize = (canvasToolSize > 5) ? 1 : canvasToolSize + 1;
     const b = document.getElementById('canvas-window-size');
-    b.style.fontSize = (brushSize * 0.125) + 'rem';
-    canvases.setBrushSize(brushSize)
+    b.style.fontSize = (canvasToolSize * 0.125) + 'rem';
+    canvases.setSize(canvasToolSize)
   });
   canvasWindow.tool('canvas-window-color', () => console.log('brush'));
   canvasWindow.tool('canvas-window-clearall', () => canvases.clearCanvas(slider.current));
