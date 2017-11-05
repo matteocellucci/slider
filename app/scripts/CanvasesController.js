@@ -12,6 +12,7 @@ class CanvasesController {
       down: false
     };
     this.resize = this.resize.bind(this);
+    this.clearCanvas = this.clearCanvas.bind(this);
   }
 
   generate(elems) {
@@ -25,6 +26,7 @@ class CanvasesController {
       canvas.style.position = 'absolute';
       canvas.style.top = 0;
       canvas.style.left = 0;
+
       canvas.addEventListener('mouseup', e => {
         if (e.which == 1) {
           this.mouse.down = false;
@@ -92,7 +94,8 @@ class CanvasesController {
     this.brushColor = color;
   }
 
-  static clearCanvas(canvas) {
+  clearCanvas(i) {
+    const canvas = this.canvases[i];
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
   }
 }

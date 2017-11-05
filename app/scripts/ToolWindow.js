@@ -55,4 +55,9 @@ class ToolWindow {
     }
     this.frame.setAttribute('class', classes);
   }
+
+  tool(id, listener) {
+    const t = document.getElementById(id);
+    t.addEventListener('click', listener);
+  }
 }

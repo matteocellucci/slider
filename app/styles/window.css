@@ -34,3 +34,6 @@
   border-color: #252525; 
 }
 
+#canvas-window-size {
+  font-size: .125rem;
+}
