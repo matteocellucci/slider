@@ -24,12 +24,12 @@ class CanvasesController {
       canvas.style.position = 'absolute';
       canvas.style.top = 0;
       canvas.style.left = 0;
-
       canvas.addEventListener('mouseup', e => {
         if (e.which == 1) {
           this.mouse.down = false;
           ctx.closePath();
         }
+        e.preventDefault();
       });
       
       canvas.addEventListener('mousedown', e => {
@@ -41,6 +41,7 @@ class CanvasesController {
           ctx.moveTo(e.clientX, e.clientY);
           this.mouse.down = true;
         }
+        e.preventDefault();
       });
     
       canvas.addEventListener('mousemove', e => {
@@ -48,6 +49,7 @@ class CanvasesController {
           ctx.lineTo(e.clientX, e.clientY);
           ctx.stroke();
         }
+        e.preventDefault();
       });
      
       this.canvases.push(canvas);
