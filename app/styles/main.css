@@ -5,6 +5,7 @@ body {
   height: 100%;
   background-color: #fbfbfb;
   color: #303030;
+  overflow: hidden;
 }
 
 /* SLIDER */

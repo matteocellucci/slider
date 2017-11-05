@@ -3,12 +3,13 @@
   const toolbar = new ToolbarController('toolbar');
   const fullscreen = new FullscreenController(document.documentElement);
   const canvases = new CanvasesController();
+  const canvasWindow = new ToolWindow('canvas-window');
 
   canvases.generate(slider.diaps);
 
   toolbar.setting('fullscreen-setting', fullscreen.toggle);
   toolbar.setting('canvas-setting', function() {
-    // window toggle
+    canvasWindow.toggle(); 
     canvases.toggle();
   });
 
@@ -31,6 +32,7 @@
         break;
       case 'd':
         toolbar.reverse('canvas-setting');
+        canvasWindow.toggle();
         canvases.toggle();
       default:
         return;

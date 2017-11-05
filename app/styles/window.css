@@ -2,11 +2,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   flex-flow: column wrap;
   border: 1px solid #303030;
   border-top-width: 10px;
   background-color: #303030;
+}
+
+.window.show {
+  display: flex;
 }
 
 .window-tool {
