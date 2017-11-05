@@ -34,19 +34,18 @@ class CanvasesController {
         }
         e.preventDefault();
       });
-      
       canvas.addEventListener('mousedown', e => {
         if (e.which == 1) {
           ctx.beginPath();
           ctx.strokeStyle = this.brushColor;
           ctx.lineWidth = this.brushSize * 2;
           ctx.lineJoin = 'round';
+          ctx.lineCap = 'round';
           ctx.moveTo(e.clientX, e.clientY);
           this.mouse.down = true;
         }
         e.preventDefault();
       });
-    
       canvas.addEventListener('mousemove', e => {
         if (this.mouse.down) {
           ctx.lineTo(e.clientX, e.clientY);
