@@ -24,8 +24,6 @@
   });
   canvasWindow.tool('canvas-window-size', () => {
     canvasToolSize = (canvasToolSize > 5) ? 1 : canvasToolSize + 1;
-    const b = document.getElementById('canvas-window-size');
-    b.style.fontSize = (canvasToolSize * 0.125) + 'rem';
     canvases.setSize(canvasToolSize)
   });
   canvasWindow.tool('canvas-window-color', () => console.log('brush'));

@@ -84,6 +84,30 @@
       </div>
     </aside>
     <div class="window" id="canvas-window">
+      <label class="window-tool exclusive-button">
+        <input type="radio" id="canvas-window-brush" name="canvas-tool" class="ex-tool hide" checked>
+        <span class="window-button-icon">
+          <i class="fa fa-paint-brush" aria-hidden="true"></i>
+        </span>
+      </label>
+      <label class="window-tool exclusive-button">
+        <input type="radio" id="canvas-window-eraser" name="canvas-tool" class="ex-tool hide">
+        <span class="window-button-icon">
+          <i class="fa fa-eraser" aria-hidden="true"></i>
+        </span>
+      </label>
+      <select class="window-tool select-button" id="canvas-window-size">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="color" id="canvas-window-color" class="window-tool single-button">
+      <button id="canvas-window-clearall" class="window-tool single-button">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <!--
       <button id="canvas-window-brush" class="window-tool">
         <i class="fa fa-paint-brush" aria-hidden="true"></i>
       </button>
@@ -99,6 +123,7 @@
       <button id="canvas-window-clearall" class="window-tool">
         <i class="fa fa-trash" aria-hidden="true"></i>
       </button>
+      -->
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
