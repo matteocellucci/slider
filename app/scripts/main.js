@@ -54,6 +54,19 @@
         toolbar.reverse('canvas-setting');
         canvasWindow.toggle();
         canvases.toggle();
+        break;
+      case 's':
+        toolbar.toggle();
+        break;
+      case 'B':
+        canvases.setBrush();
+        break;
+      case 'E':
+        canvases.setEraser();
+        break;
+      case 'C':
+        canvases.clearCanvas(slider.current);
+        break;
       default:
         return;
     }
