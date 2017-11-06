@@ -1,17 +1,22 @@
 # Slider
 
 ## ToDo
-- [ ] Add local storage feature of user notes
-- [ ] Add slide screenshot feature
-- [x] Fix fast animation overlapping
-- [ ] Create a logo
-- [ ] Change favicon
-- [ ] Add 'drawing on slide' feature'
-  - [x] Add canvas
-  - [x] Add cursor size setting
-  - [x] Add color setting
-  - [x] Add clear button
-  - [x] Resize canvas entering fullscreen mode
-  - [?] Add toggle feature button
-  - [ ] Add layers
-  - [ ] Add eraser
+- [ ] Edit README
+- [ ] Feature: reader notes
+  - [ ] Local storage of the notes
+- [ ] Feature: screenshot
+- [ ] Feature: drawing on slide (canvas)
+  - [x] Tool: brush
+  - [x] Tool: eraser
+  - [x] Tool: clear all
+  - [x] Tool's size
+  - [x] Tool's color
+  - [x] Responsive canvas
+    - [ ] Know issue: resizing means loss of data
+  - [ ] Feature: canvas layers
+- [x] Feature: toolbar
+  - [x] Toggle canvas feature
+- [x] Feature: keyboard shortcuts
+  - [ ] Know issue: using shortcut do not update window objects ui
+- [ ] Fix: favicon
+  - [ ] Create a logo
