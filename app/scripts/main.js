@@ -1,12 +1,10 @@
 (function() {
-  let canvasToolSize;
 
   const slider = new Slider('slider');
   const toolbar = new ToolbarController('toolbar');
   const fullscreen = new FullscreenController(document.documentElement);
   const canvases = new CanvasesController();
   const canvasWindow = new ToolWindow('canvas-window');
-  canvasToolSize = 1;
 
   canvases.generate(slider.diaps);
 
@@ -16,18 +14,23 @@
     canvases.toggle();
   });
 
-  canvasWindow.tool('canvas-window-brush', () => {
+  canvasWindow.toolButton('canvas-window-brush', () => {
     canvases.setBrush();
   });
-  canvasWindow.tool('canvas-window-eraser', () => {
-    canvases.setEraser()
+  canvasWindow.toolButton('canvas-window-eraser', () => {
+    canvases.setEraser();
   });
-  canvasWindow.tool('canvas-window-size', () => {
-    canvasToolSize = (canvasToolSize > 5) ? 1 : canvasToolSize + 1;
-    canvases.setSize(canvasToolSize)
+  canvasWindow.toolButton('canvas-window-clearall', () => {
+    canvases.clearCanvas(slider.current);
   });
-  canvasWindow.tool('canvas-window-color', () => console.log('brush'));
-  canvasWindow.tool('canvas-window-clearall', () => canvases.clearCanvas(slider.current));
+  canvasWindow.toolSetting('canvas-window-size', () => {
+    const selectEl = document.getElementById('canvas-window-size');
+    canvases.setSize(selectEl.options[selectEl.selectedIndex].value);
+  });
+  canvasWindow.toolSetting('canvas-window-color', () => {
+    const inputEl = document.getElementById('canvas-window-color');
+    canvases.setColor(inputEl.value);
+  });
 
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
   document.getElementById('next-btn').addEventListener('click', slider.next);

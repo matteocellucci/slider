@@ -56,8 +56,14 @@ class ToolWindow {
     this.frame.setAttribute('class', classes);
   }
 
-  tool(id, listener) {
+  toolButton(id, listener) {
     const t = document.getElementById(id);
     t.addEventListener('click', listener);
   }
+
+  toolSetting(id, listener) {
+    const t = document.getElementById(id);
+    t.addEventListener('change', listener);
+  }
+
 }
