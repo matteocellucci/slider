@@ -11,18 +11,23 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/toolbar.css">
+    <link rel="stylesheet" href="styles/navigator.css">
+    <link rel="stylesheet" href="styles/window.css">
+    <link rel="stylesheet" href="styles/canvas.css">
     <!-- endbuild -->
   </head>
   <body>
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <div id="slider">
       <section class="diapositive current">
         <h1>Sample 1</h1>
@@ -48,28 +53,78 @@
       <section class="diapositive">
         <h1>Sample 8</h1>
       </section>
-      <section class="diapositive">
-        <h1>Sample 9</h1>
-      </section>
-      <section class="diapositive">
-        <h1>Sample 0</h1>
-      </section>
     </div>
-    <nav id="controller">
-      <input id="brushcolor-ipt" type="color" name="brush-color">
-      <select id="brushsize-sct" name="brush-size">
+    <nav id="navigator">
+      <button id="menu-btn" class="navigator-button">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <button id="prev-btn" class="navigator-button">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
+      <button id="next-btn" class="navigator-button">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </nav>
+    <aside id="toolbar">
+      <div class="setting">
+        <label class="switch">
+          <input type="checkbox" id="fullscreen-setting" class="switch-controller hide">
+          <span class="switch-icon" aria-label="Toggle fullscreen">
+            <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+          </span>
+        </label>
+      </div>
+      <div class="setting">
+        <label class="switch">
+          <input type="checkbox" id="canvas-setting" class="switch-controller hide">
+          <span class="switch-icon" aria-label="Toggle canvas">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </span>
+        </label>
+      </div>
+    </aside>
+    <div class="window" id="canvas-window">
+      <label class="window-tool exclusive-button">
+        <input type="radio" id="canvas-window-brush" name="canvas-tool" class="ex-tool hide" checked>
+        <span class="window-button-icon">
+          <i class="fa fa-paint-brush" aria-hidden="true"></i>
+        </span>
+      </label>
+      <label class="window-tool exclusive-button">
+        <input type="radio" id="canvas-window-eraser" name="canvas-tool" class="ex-tool hide">
+        <span class="window-button-icon">
+          <i class="fa fa-eraser" aria-hidden="true"></i>
+        </span>
+      </label>
+      <select class="window-tool select-button" id="canvas-window-size">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <button id="clearcanvas-btn">C</button>
-      <button id="togglectrl-btn">H</button>
-      <button id="fullscreen-btn">F</button>
-      <button id="prev-btn">&#8701;</button>
-      <button id="next-btn">&#8702;</button>
-    </nav>
+      <input type="color" id="canvas-window-color" class="window-tool single-button">
+      <button id="canvas-window-clearall" class="window-tool single-button">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <!--
+      <button id="canvas-window-brush" class="window-tool">
+        <i class="fa fa-paint-brush" aria-hidden="true"></i>
+      </button>
+      <button id="canvas-window-eraser" class="window-tool">
+        <i class="fa fa-eraser" aria-hidden="true"></i>
+      </button>
+      <button id="canvas-window-size" class="window-tool">
+        <i class="fa fa-circle" aria-hidden="true"></i>
+      </button>
+      <button id="canvas-window-color" class="window-tool">
+        <i class="fa fa-eyedropper" aria-hidden="true"></i>
+      </button>
+      <button id="canvas-window-clearall" class="window-tool">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      -->
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -89,9 +144,17 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
+    <script src="scripts/Classable.js"></script>
+    <script src="scripts/Showable.js"></script>
+    <script src="scripts/Moveable.js"></script>
+    <script src="scripts/Windowable.js"></script>
+    <script src="scripts/Fullscreener.js"></script>
+    <script src="scripts/TransitionEnder.js"></script>
+    <script src="scripts/Toolbar.js"></script>
+    <script src="scripts/Slider.js"></script>
+    <script src="scripts/Keyboarder.js"></script>
+    <script src="scripts/Drawer.js"></script>
     <script src="scripts/main.js"></script>
-    <script src="scripts/CanvasesController.js"></script>
-    <script src="scripts/FullscreenController.js"></script>
     <!-- endbuild -->
   </body>
 </html>

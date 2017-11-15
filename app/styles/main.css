@@ -1,62 +1,31 @@
-/* RESET alligator */
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-  height: 100%;
-  width: 100%;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-h1, h2, h3, h4, h5, h6, p, ol, ul {
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-img {
-  height: auto;
-  max-width: 100%;
-}
-
-/* BOILERPLATE */
-.browserupgrade {
-  margin: 0.2em 0;
-  padding: 0.2em 0;
-}
-
+/* GENERICS */
+html,
 body {
-  background: #fff;
-  color: #000;
-  height: 100%;
-  margin: 0;
-  padding: 0;
   width: 100%;
+  height: 100%;
+  background-color: #fbfbfb;
+  color: #303030;
+  overflow: hidden;
 }
 
 /* SLIDER */
 #slider {
-  height: 100%;
-  left: 0;
-  overflow: hidden;
   position: relative;
   top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .diapositive {
-  height: 100%;
-  left: 100%;
   position: absolute;
   top: 0;
-  transition: transform 180ms linear;
+  left: 100%;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 300ms ease-in-out;
 }
 
 .diapositive.current {
@@ -65,51 +34,4 @@ body {
 
 .diapositive.prev {
   transform: translateX(-200%);
-}
-
-/*.diapositive .livePenCanvas {
-  width: 100%;
-  height: 100%;
-}*/
-
-/* CONTROLLER */
-#controller {
-  bottom: 0;
-  display: flex;
-  align-items: baseline;
-  position: fixed;
-  right: 0;
-  transition: transform 180ms linear;
-}
-
-#controller.hide {
-  transform: translateX(100%);
-}
-
-#controller button,
-#controller select,
-#controller input {
-  background-color: transparent;
-  color: #000;
-  border: 0;
-  cursor: pointer;
-  font: 100 1.3rem monospace;
-}
-
-#controller button:focus,
-#controller select:focus,
-#controller input:focus {
-  outline: 0;
-}
-
-#controller button:active {
-  color: #808080;
-}
-
-#prev-btn {
-  color: #d3d3d3;
-}
-
-#next-btn {
-  color: #000;
 }

@@ -1,11 +1,5 @@
-class FullscreenController {
-  constructor(target) {
-    this.target = target;
-    this.open = this.open.bind(this);
-    this.toggle = this.toggle.bind(this);
-  }
-
-  element() {
+class Fullscreener {
+  static element() {
     const fullscreenElement =
       document.fullscreenElement ||
       document.webkitFullscreenElement ||
@@ -14,7 +8,7 @@ class FullscreenController {
     return fullscreenElement;
   }
 
-  enabled() {
+  static enabled() {
     const fullscreenEnabled =
       document.fullscreenEnabled ||
       document.webkitFullscreenEnabled ||
@@ -23,22 +17,22 @@ class FullscreenController {
     return fullscreenEnabled;
   }
 
-  open() {
-    if (this.target.requestFullscreen) {
-      this.target.requestFullscreen();
+  static open(target) {
+    if (target.requestFullscreen) {
+      target.requestFullscreen();
     }
-    else if (this.target.webkitRequestFullscreen) {
-      this.target.webkitRequestFullscreen();
+    else if (target.webkitRequestFullscreen) {
+      target.webkitRequestFullscreen();
     }
-    else if (this.target.mozRequestFullScreen) {
-      this.target.mozRequestFullScreen();
+    else if (target.mozRequestFullScreen) {
+      target.mozRequestFullScreen();
     }
-    else if (this.target.msRequestFullscreen) {
-      this.target.msRequestFullscreen;
+    else if (target.msRequestFullscreen) {
+      target.msRequestFullscreen;
     }
   }
 
-  close() {
+  static close() {
     if (document.exitFullscreen) {
       document.exitFullscreen();
     }
@@ -53,12 +47,12 @@ class FullscreenController {
     }
   }
 
-  toggle() {
-    if (this.element() == null) {
-      this.open();
+  static toggle(target) {
+    if (Fullscreener.element() == null) {
+      Fullscreener.open(target);
     }
     else {
-      this.close();
+      Fullscreener.close();
     }
   }
 }

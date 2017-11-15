@@ -1,0 +1,76 @@
+#toolbar {
+  position: fixed;
+  top: 1rem;
+  left: 100%;
+  z-index: 9000;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  transition: transform 300ms ease-in-out;
+}
+
+#toolbar.show {
+  transform: translateX(-100%);
+}
+
+.setting {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 3.5rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  color: #fbfbfb;
+  background-color: #303030;
+  border-left: .4rem solid #bdc3c7;
+}
+
+.switch {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-icon {
+  display: block; 
+}
+
+.switch-icon:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -.4rem;
+  width: .4rem;
+  height: 100%;
+  background-color: #2ecc71;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.switch-icon:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -.4rem;
+  width: .4rem;
+  height: 100%;
+  background-color: #303030;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.switch:hover .switch-icon:after {
+  opacity: 1;
+}
+
+.switch-controller:checked + .switch-icon:before {
+  opacity: 1;
+}
+
+.switch-controller.hide {
+  display: none;
+}

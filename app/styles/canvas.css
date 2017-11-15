@@ -1,0 +1,7 @@
+.livePenCanvas {
+  display: none;
+}
+
+.livePenCanvas.show {
+  display: block;
+}
