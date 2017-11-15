@@ -22,14 +22,14 @@ class TransitionEnd {
     }
   }
   
-  static bind(elem, listener) {
+  static bindTo(elem, listener) {
     elem.addEventListener(
       TransitionEnd.getEventName(),
       listener
     );
   }
 
-  static unbind(elem, listener) {
+  static unbindFrom(elem, listener) {
     elem.removeEventListener(
       TransitionEnd.getEventName(),
       listener
@@ -39,8 +39,8 @@ class TransitionEnd {
   static one(elem, listener) {
     const wallCallback = function() {
       listener();
-      TransitionEnd.unbind(elem, wallCallback);
+      TransitionEnd.unbindFrom(elem, wallCallback);
     };
-    TransitionEnd.bind(elem, wallCallback);
+    TransitionEnd.bindTo(elem, wallCallback);
   }
 } 
