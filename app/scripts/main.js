@@ -1,75 +1,92 @@
 (function() {
 
+  const ids = ['canvas-window', 'toolbar', 'slider'];
+  const domBuffer = {};
+  let i = ids.length;
+  while (i--) {
+    const id = ids[i];
+    domBuffer[id] = document.getElementById(id);
+  }
+
+  const windows = {
+    canvas: new Windowable(domBuffer['canvas-window'])
+  };
+  const toolbar = new Toolbar(domBuffer['toolbar']);
+  
   const slider = new Slider('slider');
-  const toolbar = new ToolbarController('toolbar');
-  const fullscreen = new FullscreenController(document.documentElement);
   const canvases = new CanvasesController();
-  const canvasWindow = new ToolWindow('canvas-window');
 
   canvases.generate(slider.diaps);
 
-  toolbar.setting('fullscreen-setting', fullscreen.toggle);
-  toolbar.setting('canvas-setting', function() {
-    canvasWindow.toggle(); 
-    canvases.toggle();
-  });
+  toolbar.addUtility(
+    'fullscreen-setting',
+    document.getElementById('fullscreen-setting'),
+    () => Fullscreener.toggle(document.documentElement)
+  );
+  toolbar.addUtility(
+    'canvas-setting',
+    document.getElementById('canvas-setting'),
+    () => {
+      windows.canvas.toggle(); 
+      canvases.toggle();
+    }
+  );
 
-  canvasWindow.toolButton('canvas-window-brush', () => {
-    canvases.setBrush();
-  });
-  canvasWindow.toolButton('canvas-window-eraser', () => {
-    canvases.setEraser();
-  });
-  canvasWindow.toolButton('canvas-window-clearall', () => {
-    canvases.clearCanvas(slider.current);
-  });
-  canvasWindow.toolSetting('canvas-window-size', () => {
-    const selectEl = document.getElementById('canvas-window-size');
-    canvases.setSize(selectEl.options[selectEl.selectedIndex].value);
-  });
-  canvasWindow.toolSetting('canvas-window-color', () => {
-    const inputEl = document.getElementById('canvas-window-color');
-    canvases.setColor(inputEl.value);
-  });
+  windows.canvas.addButton(
+    'canvas-window-brush',
+    document.getElementById('canvas-window-brush'),
+    () => canvases.setBrush()
+  );
+  windows.canvas.addButton(
+    'canvas-window-eraser',
+    document.getElementById('canvas-window-eraser'),
+    () => canvases.setEraser()
+  );
+  windows.canvas.addButton(
+    'canvas-window-clearall',
+    document.getElementById('canvas-window-clearall'),
+    () => canvases.clearCanvas(slider.current)
+  );
+  const sizeSettingElement = document.getElementById('canvas-window-size');
+  windows.canvas.addSetting(
+    'canvas-window-size',
+    sizeSettingElement,
+    () => {
+      const sizeIndex = sizeSettingElement.selected;
+      const size = sizeSettingElement[sizeIndex].value;
+      canvases.setSize(size);
+    }
+  );
+  const colorSettingElement = document.getElementById('canvas-window-color');
+  windows.canvas.addSetting(
+    'canvas-window-color',
+    colorSettingElement,
+    () => {
+      const color = colorSettingElement.value;
+      canvases.setColor(color);
+    }
+  );
 
   document.getElementById('prev-btn').addEventListener('click', slider.prev);
   document.getElementById('next-btn').addEventListener('click', slider.next);
-  document.getElementById('menu-btn').addEventListener('click', toolbar.toggle);
+  document.getElementById('menu-btn').addEventListener('click', () => toolbar.toggle());
   window.addEventListener('resize', () => canvases.resize(document.documentElement));
 
-  window.addEventListener('keydown', e => {
-    console.log(e.key);
-    switch (e.key) {
-      case 'ArrowRight':
-        slider.next();
-        break;
-      case 'ArrowLeft':
-        slider.prev();
-        break;
-      case 'f':
-        toolbar.reverse('fullscreen-setting');
-        fullscreen.toggle();
-        break;
-      case 'd':
-        toolbar.reverse('canvas-setting');
-        canvasWindow.toggle();
-        canvases.toggle();
-        break;
-      case 's':
-        toolbar.toggle();
-        break;
-      case 'B':
-        canvases.setBrush();
-        break;
-      case 'E':
-        canvases.setEraser();
-        break;
-      case 'C':
-        canvases.clearCanvas(slider.current);
-        break;
-      default:
-        return;
-    }
-    e.preventDefault();
-  });
+  const keys = {
+    'ArrowRight': () => slider.next(),
+    'ArrowLeft': () => slider.prev(),
+    'f': () => toolbar.runKill('fullscreen-setting'),
+    'd': () => {
+      toolbar.runKill('canvas-setting');
+      canvases.toggle();
+    },
+    's': () => toolbar.toggle(),
+    'B': () => canvases.setBrush(),
+    'E': () => canvases.setEraser(),
+    'C': () => canvases.clearCanvas(slider.current)
+  };
+  for (let key in keys) {
+    Keyboarder.bind(key, keys[key]);
+  }
+  Keyboarder.init();
 })();
