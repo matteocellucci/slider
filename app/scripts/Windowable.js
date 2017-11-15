@@ -1,4 +1,4 @@
-class Windowable extends Movable {
+class Windowable extends Moveable {
   constructor(element) {
     super(element);
     this.buttons = {};
