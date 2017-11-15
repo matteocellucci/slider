@@ -5,13 +5,13 @@ class Windowable extends Movable {
     this.settings = {};
   }
 
-  addButton(name, element, listener) {
-    this.buttons[name] = element;
+  addButton(name, triggerer, listener) {
+    this.buttons[name] = triggerer;
     this.buttons[name].onclick = listener;
   }
 
-  addSetting(name, element, listener) {
-    this.settings[name] = element;
+  addSetting(name, triggerer, listener) {
+    this.settings[name] = triggerer;
     this.settings[name].onchange = listener;
   }
 
