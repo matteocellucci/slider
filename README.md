@@ -1,5 +1,14 @@
 # Slider
 
+## Keyboard shortcuts
+- Arrow keys: previous or next slide
+- s: toggle settings menu
+- f: toggle fullscreen
+- d: toggle drawing feature
+- B: brush tool in drawing feature
+- E: eraser tool in drawing feature
+- C: clear all in drawing feature
+
 ## ToDo
 - [ ] Edit README
 - [ ] Feature: reader notes
