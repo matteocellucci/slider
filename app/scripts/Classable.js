@@ -9,16 +9,16 @@ class Classable {
   }
 
   hasClass(className) {
-    return this.classes.include(className);
+    return this.classes.includes(className);
   }
 
   addClass(className) {
-    classes.push(className);
+    this.classes.push(className);
     this.domElement.setAttribute('class', this.classes.join(' '));
   }
   
   removeClass(className) {
-    const i = this.classes.indexOf(className);
+    let i = this.classes.indexOf(className);
     while (i >= 0) {
       this.classes.splice(i, 1);
       i = this.classes.indexOf(className);
