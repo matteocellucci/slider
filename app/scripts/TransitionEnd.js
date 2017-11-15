@@ -1,46 +1,39 @@
 class TransitionEnd {
-  static which() {
-    TransitionEnd.__which = undefined;
-    const el = document.createElement('fakeelement');
-    const transitions = {
+  static getEventName() {
+    if (!TransitionEnd.eventName) {
+      TransitionEnd.setEventName();
+    }
+    return TransitionEnd.eventName;
+  }
+    
+  static setEventName() { 
+    const div = document.createElement('div');
+    const events = {
       'transition'      : 'transitionend',
       'OTransition'     : 'oTransitionEnd',
       'MozTransition'   : 'transitionend',
       'WebkitTransition': 'webkitTransitionEnd'
     };
 
-    for (let t in transitions) {
-      if (el.style[t] !== undefined) {
-        TransitionEnd.__which = transitions[t];
-        return transitions[t];
+    for (let e in events) {
+      if (div.style[e] !== undefined) {
+        TransitionEnd.eventName = events[e];
       }
     }
   }
-
+  
   static bind(elem, listener) {
-    if (TransitionEnd.__which) {
-      elem.addEventListener(
-        TransitionEnd.__which,
-        listener
-      );
-    }
-    else {
-      TransitionEnd.which();
-      TransitionEnd.bind(elem, listener);
-    }
+    elem.addEventListener(
+      TransitionEnd.getEventName(),
+      listener
+    );
   }
 
   static unbind(elem, listener) {
-    if (TransitionEnd.__which) {
-      elem.removeEventListener(
-        TransitionEnd.__which,
-        listener
-      );
-    }
-    else {
-      TransitionEnd.which();
-      TransitionEnd.unbind(elem, listener);
-    }
+    elem.removeEventListener(
+      TransitionEnd.getEventName(),
+      listener
+    );
   }
   
   static one(elem, listener) {
