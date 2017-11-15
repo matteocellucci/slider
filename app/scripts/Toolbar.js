@@ -8,13 +8,13 @@ class Toolbar extends Showable {
     this.utilities[name] = triggerer;
     this.utilities[name].onchange = () => listener();
   }
-
-  active(name) {
+  
+  run(name) {
     this.utilities[name].checked = true;
     this.utilities[name].onchange();
   }
 
-  close(name){
+  kill(name){
     this.utilities[name].checked = false;
     this.utilities[name].onchange();
   }
