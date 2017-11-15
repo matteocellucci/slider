@@ -18,4 +18,13 @@ class Toolbar extends Showable {
     this.utilities[name].checked = false;
     this.utilities[name].onchange();
   }
+
+  runKill(name) {
+    if (this.utilities[name.checked]) {
+      this.kill(name);
+    }
+    else {
+      this.run(name);
+    }
+  }
 }
