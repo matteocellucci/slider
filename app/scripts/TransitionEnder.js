@@ -1,9 +1,9 @@
-class TransitionEnd {
+class TransitionEnder {
   static getEventName() {
-    if (!TransitionEnd.eventName) {
-      TransitionEnd.setEventName();
+    if (!TransitionEnder.eventName) {
+      TransitionEnder.setEventName();
     }
-    return TransitionEnd.eventName;
+    return TransitionEnder.eventName;
   }
     
   static setEventName() { 
@@ -17,21 +17,21 @@ class TransitionEnd {
 
     for (let e in events) {
       if (div.style[e] !== undefined) {
-        TransitionEnd.eventName = events[e];
+        TransitionEnder.eventName = events[e];
       }
     }
   }
   
   static bindTo(elem, listener) {
     elem.addEventListener(
-      TransitionEnd.getEventName(),
+      TransitionEnder.getEventName(),
       listener
     );
   }
 
   static unbindFrom(elem, listener) {
     elem.removeEventListener(
-      TransitionEnd.getEventName(),
+      TransitionEnder.getEventName(),
       listener
     );
   }
@@ -39,8 +39,8 @@ class TransitionEnd {
   static one(elem, listener) {
     const wallCallback = function() {
       listener();
-      TransitionEnd.unbindFrom(elem, wallCallback);
+      TransitionEnder.unbindFrom(elem, wallCallback);
     };
-    TransitionEnd.bindTo(elem, wallCallback);
+    TransitionEnder.bindTo(elem, wallCallback);
   }
 } 
