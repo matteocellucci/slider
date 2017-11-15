@@ -1,7 +1,7 @@
 class Keyboarder {
   static init() {
     window.addEventListener('keydown', (e) => {
-      console.log(e.key);
+      // console.log(e.key);
       const action = Keyboarder.binds[e.key];
       if (action) {
         action();
@@ -10,12 +10,13 @@ class Keyboarder {
     });
   }
 
-  static bindButton(key, listener) {
+  static bind(key, listener) {
+    const temporaryBind = {};
+    temporaryBind[key] = listener;
+    
     Keyboarder.binds = Object.assign(
       Keyboarder.binds || {},
-      {
-        key: listener
-      }
+      temporaryBind
     );
   }
 }
