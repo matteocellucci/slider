@@ -20,7 +20,7 @@ class Toolbar extends Showable {
   }
 
   runKill(name) {
-    if (this.utilities[name.checked]) {
+    if (this.utilities[name].checked) {
       this.kill(name);
     }
     else {
