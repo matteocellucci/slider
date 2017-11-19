@@ -11,6 +11,7 @@
 
 ## ToDo
 - [ ] Edit README
+- [ ] Add auto vendors injection in index.html
 - [ ] Feature: reader notes
   - [ ] Local storage of the notes
 - [ ] Feature: screenshot
@@ -22,7 +23,6 @@
   - [x] Tool's color
   - [x] Responsive canvas
     - [ ] Know issue: resizing means loss of data
-  - [ ] Feature: canvas layers
 - [x] Feature: toolbar
   - [x] Toggle canvas feature
 - [x] Feature: keyboard shortcuts
