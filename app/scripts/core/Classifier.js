@@ -2,55 +2,95 @@
 
 let Classifier = (state) => {
   const noHtmlWhitespaceExp = /[^\x20\t\r\n\f]+/g;
-  
-  let classes = [];
-  if (state && state.domRef && state.domRef.hasAttribute && state.domRef.hasAttribute('class')) {
-    classes = state.domRef.getAttribute('class').match(noHtmlWhitespaceExp);
-  }
-  
+
+  const classifierGetClass = () => {
+    if (!state || !state.getAttribute || !state.getAttribute('class')) {
+      return [];
+    }
+    return state.getAttribute('class').match(noHtmlWhitespaceExp);
+  };
+
+  const classifierSetClass = (classes) => {
+    if (state && state.setAttribute) {
+      state.setAttribute('class', classes.join(' '));
+    }
+  };
+
   return {
-    hasClass (className) {
-      const strippedName = className.match(noHtmlWhitespaceExp)[0];
-      return classes.includes(strippedName);
-    },
-    addClass (classesNames) {
+    hasClass (classesNames) {
+      if (!classesNames || !classesNames.match(noHtmlWhitespaceExp)) {
+        return false;
+      }
+
       const strippedNames = classesNames.match(noHtmlWhitespaceExp);
+      const classes = classifierGetClass();
+
       for (let i = 0, len = strippedNames.length; i < len; i++) {
-        if (classes.indexOf(strippedNames[i]) < 0) {
-          classes.push(strippedNames[i]);
+        if (!classes.includes(strippedNames[i])) {
+          return false;
         }
       }
-      state.domRef.setAttribute('class', classes.join(' '));
-      return this;
+      return true;
     },
-    removeClass (classesNames) {
+
+    addClass (classesNames) {
+      if (!classesNames || !classesNames.match(noHtmlWhitespaceExp)) {
+        return false;
+      }
+
       const strippedNames = classesNames.match(noHtmlWhitespaceExp);
-      for (let i = 0, len1 = strippedNames.length; i < len1; i++) {
-        let j = classes.indexOf(strippedNames[i]);
+      const classes = classifierGetClass();
+
+      for (let i = 0, len = strippedNames.length; i < len; i++) {
+        let name = strippedNames[i];
+        if (!classes.includes(name)) {
+          classes.push(name);
+        }
+      }
+      classifierSetClass(classes);
+    },
+
+    removeClass (classesNames) {
+      if (!classesNames || !classesNames.match(noHtmlWhitespaceExp)) {
+        return false;
+      }
+
+      const strippedNames = classesNames.match(noHtmlWhitespaceExp);
+      const classes = classifierGetClass();
+
+      for (let i = 0, len = strippedNames.length; i < len; i++) {
+        let name = strippedNames[i];
+        let j = classes.indexOf(name);
         while (j >= 0) {
           classes.splice(j, 1);
-          j = classes.indexOf(strippedNames[i]);
+          j = classes.indexOf(name);
         }
       }
-      state.domRef.setAttribute('class', classes.join(' '));
-      return this;
+      classifierSetClass(classes);
     },
+
     toggleClass (classesNames) {
+      if (!classesNames || !classesNames.match(noHtmlWhitespaceExp)) {
+        return false;
+      }
+
       const strippedNames = classesNames.match(noHtmlWhitespaceExp);
-      for (let i = 0, len1 = strippedNames.length; i < len1; i++) {
-        let j = classes.indexOf(strippedNames[i]);
-        if (j >= 0) {
-          do {
-            classes.splice(j, 1);
-            j = classes.indexOf(strippedNames[i]);
-          } while (j >= 0);
+      const classes = classifierGetClass();
+
+      for (let i = 0, len = strippedNames.length; i < len; i++) {
+        let name = strippedNames[i];
+        let j = classes.indexOf(name);
+        if (j < 0) {
+          classes.push(name);
         }
         else {
-          classes.push(strippedNames[i]);
+          do {
+            classes.splice(j, 1);
+            j = classes.indexOf(name);
+          } while (j >= 0);
         }
       }
-      state.domRef.setAttribute('class', classes.join(' '));
-      return this;
+      classifierSetClass(classes);
     }
   };
 };
