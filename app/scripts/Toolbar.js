@@ -1,6 +1,5 @@
-class Toolbar extends Showable {
+class Toolbar {
   constructor(element) {
-    super(element);
     this.utilities = {};
   }
 

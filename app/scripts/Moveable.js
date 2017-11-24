@@ -1,7 +1,5 @@
-class Moveable extends Showable {
+class Moveable {
   constructor(element) {
-    super(element);
-
     let gapX = 0;
     let gapY = 0;
     let mouseDown = false;

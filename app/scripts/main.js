@@ -13,7 +13,11 @@
   const drawer = new Drawer();
   drawer.generate(slider.diaps);
 
-  const toolbar = new Toolbar(domBuffer['toolbar']);
+  const toolbar = Object.assign(
+      new Toolbar(domBuffer['toolbar']),
+      Classifier(domBuffer['toolbar'])
+  );
+
   toolbar.addUtility(
     'fullscreen-setting',
     document.getElementById('fullscreen-setting'),
@@ -23,13 +27,16 @@
     'canvas-setting',
     document.getElementById('canvas-setting'),
     () => {
-      windows.canvas.toggle(); 
+      windows.canvas.toggleClass('show'); 
       drawer.toggle();
     }
   );
 
   const windows = {
-    canvas: new Windowable(domBuffer['canvas-window'])
+    canvas: Object.assign(
+      new Windowable(domBuffer['canvas-window']),
+      Classifier(domBuffer['canvas-window'])
+    )
   };
   windows.canvas.addButton(
     'canvas-window-brush',
@@ -67,7 +74,7 @@
 
   document.getElementById('prev-btn').addEventListener('click', () => slider.prev());
   document.getElementById('next-btn').addEventListener('click', () => slider.next());
-  document.getElementById('menu-btn').addEventListener('click', () => toolbar.toggle());
+  document.getElementById('menu-btn').addEventListener('click', () => toolbar.toggleClass('show'));
   //window.addEventListener('resize', () => canvases.resize(document.documentElement));
 
   const keys = {
@@ -75,7 +82,7 @@
     'ArrowLeft': () => slider.prev(),
     'f': () => toolbar.runKill('fullscreen-setting'),
     'd': () => toolbar.runKill('canvas-setting'),
-    's': () => toolbar.toggle(),
+    's': () => toolbar.toggleClass('show'),
     'B': () => drawer.setBrush(),
     'E': () => drawer.setEraser(),
     'C': () => drawer.clearCanvas(slider.current)

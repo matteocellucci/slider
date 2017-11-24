@@ -50,7 +50,7 @@ class Drawer {
         e.preventDefault();
       });
      
-      this.canvases.push(new Showable(canvas));
+      this.canvases.push(Object.assign(canvas, Classifier(canvas)));
       conteiners[i].appendChild(canvas);
     }
   }
@@ -74,7 +74,7 @@ class Drawer {
   toggle() {
     let i = this.canvases.length;
     while (i--) {
-      this.canvases[i].toggle();
+      this.canvases[i].toggleClass('show');
     }
   }
 
