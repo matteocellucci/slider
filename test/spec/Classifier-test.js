@@ -1,37 +1,37 @@
-(function () {
+(function() {
   'use strict';
 
-  describe('Classifier', function () {
-    describe('when adding classifier behavior', function () {
-      it('should add hasClass behavior', function () {
+  describe('Classifier', function() {
+    describe('when adding classifier behavior', function() {
+      it('should add hasClass behavior', function() {
         const classifier = Object.assign({}, Classifier());
         expect(classifier.hasClass).to.exist;
       });
 
-      it('should add addClass behavior', function () {
+      it('should add addClass behavior', function() {
         const classifier = Object.assign({}, Classifier());
         expect(classifier.addClass).to.exist;
       });
 
-      it('should add removeClass behavior', function () {
+      it('should add removeClass behavior', function() {
         const classifier = Object.assign({}, Classifier());
         expect(classifier.removeClass).to.exist;
       });
 
-      it('should add toggleClass behavior', function () {
+      it('should add toggleClass behavior', function() {
         const classifier = Object.assign({}, Classifier());
         expect(classifier.toggleClass).to.exist;
       });
       
-      it('should extend and do not transform the object', function () {
+      it('should extend and do not transform the object', function() {
         const state = document.createElement('test');
         const classifier = Object.assign(state, Classifier(state));
         expect(classifier.tagName).to.equal('TEST');
       });
     });
     
-    describe('#hasClass', function () {
-      it('should check the existence of passed class', function () {
+    describe('#hasClass', function() {
+      it('should check the existence of passed class', function() {
         let state = {};
         let classifier = Object.assign(state, Classifier());
         expect(classifier.hasClass('test1')).to.equal(false);
@@ -47,7 +47,7 @@
         expect(classifier.hasClass('test1')).to.equal(true);
       });
       
-      it('should succeed if all passed classes exist', function () {
+      it('should succeed if all passed classes exist', function() {
         let state = document.createElement('test')
         let classifier = Object.assign(state, Classifier(state));
         
@@ -65,7 +65,7 @@
         expect(classifier.hasClass()).to.equal(false);
       });
 
-      it('should ignore all html whitespace', function () {
+      it('should ignore all html whitespace', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -89,8 +89,8 @@
       });
     });
 
-    describe('#addClass', function () {
-      it('should append passed classes to the existing ones', function () {
+    describe('#addClass', function() {
+      it('should append passed classes to the existing ones', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -110,7 +110,7 @@
         expect(state.getAttribute('class')).to.equal('test1 test2 test3 test4');
       });
 
-      it('should ignore all html whitespace', function () {
+      it('should ignore all html whitespace', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -127,7 +127,7 @@
         expect(state.getAttribute('class')).to.equal('test1 test2 test3 test4');
       });
 
-      it('should ignore already existing class', function () {
+      it('should ignore already existing class', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -142,8 +142,8 @@
       });
     });
     
-    describe('#removeClass', function () {
-      it('should remove all occurences of all passed classes', function () {
+    describe('#removeClass', function() {
+      it('should remove all occurences of all passed classes', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -174,7 +174,7 @@
         expect(state.getAttribute('class')).to.equal('test2 test4 test4');
       });
 
-      it('should ignore all html whitespace', function () {
+      it('should ignore all html whitespace', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -195,8 +195,8 @@
       });
     });
 
-    describe('#toggleClass', function () {
-      it('should toggle all occurences of all passed classes', function () {
+    describe('#toggleClass', function() {
+      it('should toggle all occurences of all passed classes', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
@@ -224,7 +224,7 @@
         expect(state.getAttribute('class')).to.equal('test2 test4 test5');
       });
 
-      it('should ignore all html whitespace', function () {
+      it('should ignore all html whitespace', function() {
         let state = document.createElement('test');
         let classifier = Object.assign(state, Classifier(state));
         
